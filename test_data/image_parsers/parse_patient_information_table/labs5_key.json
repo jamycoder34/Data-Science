@@ -1,0 +1,50 @@
+[
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "WBC",
+            "val": 13.3,
+            "ts": "2019-05-10T00:28:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Platelets",
+            "val": 361.0,
+            "ts": "2019-05-10T00:28:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "WBC",
+            "val": 17.1,
+            "ts": "2019-05-12T10:59:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Platelets",
+            "val": 406.0,
+            "ts": "2019-05-12T10:59:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "WBC",
+            "val": 15.0,
+            "ts": "2019-05-13T11:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Platelets",
+            "val": 432.0,
+            "ts": "2019-05-13T11:00:00"
+        }
+    }
+]

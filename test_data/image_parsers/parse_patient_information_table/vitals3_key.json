@@ -1,0 +1,130 @@
+[
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Temp",
+            "val": 36.5,
+            "ts": "2019-05-13T10:51:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 72.0,
+            "ts": "2019-05-13T10:51:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "RespRate",
+            "val": 17.0,
+            "ts": "2019-05-13T10:51:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SysABP",
+            "val": 110.0,
+            "ts": "2019-05-13T10:51:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "DiasABP",
+            "val": 73.0,
+            "ts": "2019-05-13T10:51:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SpO2",
+            "val": 96.0,
+            "ts": "2019-05-13T10:51:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 72.0,
+            "ts": "2019-05-13T12:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "RespRate",
+            "val": 17.0,
+            "ts": "2019-05-13T12:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 72.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "RespRate",
+            "val": 17.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Temp",
+            "val": 37.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 89.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "RespRate",
+            "val": 16.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SysABP",
+            "val": 109.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "DiasABP",
+            "val": 76.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SpO2",
+            "val": 96.0,
+            "ts": "2019-05-13T16:00:00"
+        }
+    }
+]

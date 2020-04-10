@@ -1,0 +1,54 @@
+[
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "name",
+            "value": {
+                "first": "Robin",
+                "last": "Boback"
+            }
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "MRN",
+            "value": "M000803657"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "DOB",
+            "value": "1954-06-10T00:00:00"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "gender",
+            "value": "F"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "ward",
+            "value": "4MS4W"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "bed",
+            "value": "02"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "room",
+            "value": "407"
+        }
+    }
+]

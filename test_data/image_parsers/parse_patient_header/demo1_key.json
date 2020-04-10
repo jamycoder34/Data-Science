@@ -1,0 +1,54 @@
+[
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "name",
+            "value": {
+                "first": "James E",
+                "last": "Vermeulen"
+            }
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "MRN",
+            "value": "M000731102"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "DOB",
+            "value": "1947-06-19T00:00:00"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "gender",
+            "value": "M"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "ward",
+            "value": "4SSUR"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "bed",
+            "value": "1"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "room",
+            "value": "464"
+        }
+    }
+]

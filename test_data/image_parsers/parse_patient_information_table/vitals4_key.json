@@ -1,0 +1,74 @@
+[
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 73.0,
+            "ts": "2019-05-13T13:37:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "RespRate",
+            "val": 16.0,
+            "ts": "2019-05-13T13:37:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SysABP",
+            "val": 113.0,
+            "ts": "2019-05-13T13:37:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "DiasABP",
+            "val": 74.0,
+            "ts": "2019-05-13T13:37:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SpO2",
+            "val": 93.0,
+            "ts": "2019-05-13T13:37:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 74.0,
+            "ts": "2019-05-13T15:04:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 72.0,
+            "ts": "2019-05-13T15:17:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 72.0,
+            "ts": "2019-05-13T15:52:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 72.0,
+            "ts": "2019-05-13T16:05:00"
+        }
+    }
+]

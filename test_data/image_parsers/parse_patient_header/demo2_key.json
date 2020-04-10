@@ -1,0 +1,54 @@
+[
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "name",
+            "value": {
+                "first": "Josephine",
+                "last": "Boyd"
+            }
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "MRN",
+            "value": "M000666562"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "DOB",
+            "value": "1921-01-21T00:00:00"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "gender",
+            "value": "F"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "ward",
+            "value": "3SCARD"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "bed",
+            "value": "01"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "room",
+            "value": "375"
+        }
+    }
+]

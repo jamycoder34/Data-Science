@@ -1,0 +1,18 @@
+[
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "WBC",
+            "val": 8.9,
+            "ts": "2019-05-13T12:57:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Platelets",
+            "val": 223.0,
+            "ts": "2019-05-13T12:57:00"
+        }
+    }
+]

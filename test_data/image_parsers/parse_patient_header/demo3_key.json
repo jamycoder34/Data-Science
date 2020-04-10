@@ -1,0 +1,54 @@
+[
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "name",
+            "value": {
+                "first": "Lana L",
+                "last": "FoxGerrow"
+            }
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "MRN",
+            "value": "M000635597"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "DOB",
+            "value": "1969-11-04T00:00:00"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "gender",
+            "value": "F"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "ward",
+            "value": "1SOBS"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "bed",
+            "value": "01"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "room",
+            "value": "152"
+        }
+    }
+]

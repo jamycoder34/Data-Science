@@ -1,0 +1,50 @@
+[
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "BUN",
+            "val": 19.0,
+            "ts": "2019-05-11T10:31:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Creatinine",
+            "val": 0.99,
+            "ts": "2019-05-11T10:31:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Glucose",
+            "val": 90.0,
+            "ts": "2019-05-11T10:31:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "BUN",
+            "val": 23.0,
+            "ts": "2019-05-13T15:30:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Creatinine",
+            "val": 0.99,
+            "ts": "2019-05-13T15:30:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Glucose",
+            "val": 105.0,
+            "ts": "2019-05-13T15:30:00"
+        }
+    }
+]

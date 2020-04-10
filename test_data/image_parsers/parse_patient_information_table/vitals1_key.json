@@ -1,0 +1,98 @@
+[
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Temp",
+            "val": 37.0,
+            "ts": "2019-05-13T11:46:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 96.0,
+            "ts": "2019-05-13T11:46:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "RespRate",
+            "val": 16.0,
+            "ts": "2019-05-13T11:46:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SysABP",
+            "val": 100.0,
+            "ts": "2019-05-13T11:46:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "DiasABP",
+            "val": 66.0,
+            "ts": "2019-05-13T11:46:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SpO2",
+            "val": 97.0,
+            "ts": "2019-05-13T11:46:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "Temp",
+            "val": 37.11,
+            "ts": "2019-05-13T19:09:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "HR",
+            "val": 90.0,
+            "ts": "2019-05-13T19:09:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SysABP",
+            "val": 101.0,
+            "ts": "2019-05-13T19:09:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "DiasABP",
+            "val": 66.0,
+            "ts": "2019-05-13T19:09:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "RespRate",
+            "val": 16.0,
+            "ts": "2019-05-13T19:09:00"
+        }
+    },
+    {
+        "type": "measurement",
+        "data": {
+            "mmt": "SpO2",
+            "val": 97.0,
+            "ts": "2019-05-13T19:09:00"
+        }
+    }
+]

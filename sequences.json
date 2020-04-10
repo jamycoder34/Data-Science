@@ -1,0 +1,4165 @@
+{
+  "system_recovery": {
+    "steps": {}
+  },
+  "start_ehr": {
+    "steps": {
+      "0": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run subsequence to start ehr",
+          "subsequence_name": "start_ehr_without_recovery"
+        }
+      }
+    },
+    "recovery": "stop_ehr"
+  },
+  "start_ehr_without_recovery": {
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 3 seconds",
+          "wait_time": "3"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Close Meditech if open",
+          "subsequence_name": "close_meditech_if_open"
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the launch_ehr_application subsequence",
+          "subsequence_name": "launch_ehr_application"
+        }
+      }
+    }
+  },
+  "stop_ehr": {
+    "steps": {
+      "0": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the check for meditech connect error popup subsequence",
+          "subsequence_name": "check_for_connect_error_popup"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the check for stopped working subsequence",
+          "subsequence_name": "check_for_stopped_working_popup"
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the check for Windows stopped working popup sequence",
+          "subsequence_name": "close_windows_stopped_working_if_open"
+        }
+      },
+      "3": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Close Meditech if open",
+          "subsequence_name": "close_meditech_if_open"
+        }
+      },
+      "4": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Close Chrome if open",
+          "subsequence_name": "close_chrome"
+        }
+      }
+    }
+  },
+  "setup_ehr": {
+    "steps": {}
+  },
+  "parse_patient_list": {
+    "steps": {
+      "0": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run assert_ehr_base_state subsequence",
+          "subsequence_name": "assert_ehr_base_state"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run open_physician_care_manager subsequence",
+          "subsequence_name": "open_physician_care_manager"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert the Any Location button is present",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                497,
+                132,
+                622,
+                149
+              ],
+              "file_name": "e9d907b-33ba-4bd4-b53a-3ebd3d9051b1.png"
+            }
+          ]
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "5": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Any Location button",
+          "x": "m",
+          "y": "m",
+          "image_name": "pcm_any_location_button",
+          "relative_area": [
+            [
+              497,
+              132
+            ],
+            [
+              619,
+              147
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "7": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Any Location button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "8": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "9": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "10": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "11": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_observation_location subsequence",
+          "subsequence_name": "process_observation_location"
+        }
+      },
+      "12": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "13": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_icu_location subsequence",
+          "subsequence_name": "process_icu_location"
+        }
+      },
+      "14": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "15": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_oncology_location subsequence",
+          "subsequence_name": "process_oncology_location"
+        }
+      },
+      "16": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "17": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_4_s_surgical_location subsequence",
+          "subsequence_name": "process_4_s_surgical_location"
+        }
+      },
+      "18": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "19": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_observation_location subsequence",
+          "subsequence_name": "process_4_n_medsurg_location"
+        }
+      },
+      "20": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "21": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_pediatric_location subsequence",
+          "subsequence_name": "process_pediatric_location"
+        }
+      },
+      "22": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "23": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_selective_care_location subsequence",
+          "subsequence_name": "process_selective_care_location"
+        }
+      },
+      "24": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "25": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the close_current_program subsequence",
+          "subsequence_name": "close_current_program"
+        }
+      }
+    },
+    "recovery": "recover_ehr"
+  },
+  "search_patient": {
+    "steps": {
+      "0": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run assert_ehr_base_state subsequence",
+          "subsequence_name": "assert_ehr_base_state"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run open_physician_care_manager subsequence",
+          "subsequence_name": "open_physician_care_manager"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Find Patient button",
+          "x": "m",
+          "y": "m",
+          "image_name": "find_patient_button",
+          "relative_area": [
+            [
+              1126,
+              255
+            ],
+            [
+              1275,
+              271
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "5": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Find Patient button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "7": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on the patient search screen",
+          "max_wait": 10,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                619,
+                183,
+                806,
+                210
+              ],
+              "file_name": "65cf04f-0557-49c1-b441-110abc46883e.png"
+            }
+          ]
+        }
+      },
+      "8": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Account Num search box",
+          "x": "r",
+          "y": "m",
+          "image_name": "account_search_box",
+          "relative_area": [
+            [
+              620,
+              186
+            ],
+            [
+              790,
+              206
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "9": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "10": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Account Number box",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "11": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "12": {
+        "action_type": "type_custom_text",
+        "information": {
+          "explanation": "type in Account Num",
+          "expression": "task_state[\"current_patient\"][\"account_num\"]",
+          "type_speed": "0.02"
+        }
+      },
+      "13": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return to search for patient",
+          "key_combo": "return"
+        }
+      },
+      "14": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for patient results",
+          "wait_time": "2"
+        }
+      },
+      "15": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "Mark patient as absent if No matches found. text is returned. Otherwise, continue parse sequences.",
+          "if_subseq": "patient_absent_error_thrower",
+          "else_subseq": "process_found_patient",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                468,
+                293,
+                654,
+                319
+              ],
+              "file_name": "d57c69a-af60-4d32-8acc-518cbbc4348b.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "process_found_patient": {
+    "steps": {
+      "0": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return to select the current patient",
+          "key_combo": "return"
+        }
+      },
+      "1": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for the patient to load",
+          "wait_time": "2"
+        }
+      },
+      "2": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If on the select visit screen, select a visit and switch to the Recently Added screen",
+          "if_subseq": "select_current_visit",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                415,
+                108,
+                710,
+                149
+              ],
+              "file_name": "a5dbeb7-5884-4210-aa07-a52c4e5a8543.png"
+            }
+          ]
+        }
+      },
+      "3": {
+        "action_type": "if_else_custom_function",
+        "information": {
+          "explanation": "Continue parse if patient is over 18. Otherwise, throw a patient absent error",
+          "if_subseq": "patient_present_parse_patient_sequence",
+          "else_subseq": "patient_absent_error_thrower",
+          "method": "parse_patient_header_for_age_and_ward"
+        }
+      }
+    }
+  },
+  "parse_patient": {
+    "steps": {
+      "0": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the search_patient subsequence to find the patient",
+          "subsequence_name": "search_patient"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the close_current_program subsequence",
+          "subsequence_name": "close_current_program"
+        }
+      }
+    },
+    "recovery": "recover_ehr"
+  },
+  "launch_ehr_application": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Close Meditech if it is open (can be open but locked, for example)",
+          "subsequence_name": "close_meditech_if_open"
+        }
+      },
+      "2": {
+        "action_type": "launch_application",
+        "information": {
+          "explanation": "Launch Google Chrome",
+          "application_name": "chrome --incognito --start-maximized"
+        }
+      },
+      "3": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert Google Chrome incognito is open",
+          "max_wait": 20,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                523,
+                285,
+                757,
+                309
+              ],
+              "file_name": "0ca07ab-e6fc-468c-b017-27def2b4d6b4.png"
+            }
+          ]
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "5": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Toggle address bar",
+          "key_combo": "Ctrl+l"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "7": {
+        "action_type": "type_text",
+        "information": {
+          "explanation": "Type in Citrix login URL",
+          "text": "https://webint.porthuronhospital.org/Citrix/PHH/auth/login.aspx",
+          "type_speed": ".02"
+        }
+      },
+      "8": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "9": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return.",
+          "key_combo": "return"
+        }
+      },
+      "10": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 8 seconds",
+          "wait_time": "8"
+        }
+      },
+      "11": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "check for pre-logon message",
+          "if_subseq": "pre_logon_message",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                184,
+                145,
+                273,
+                165
+              ],
+              "file_name": "69e0340-17bf-4585-b20b-3ba5eff2619a.png"
+            }
+          ]
+        }
+      },
+      "12": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "wait a bit",
+          "wait_time": "2"
+        }
+      },
+      "13": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "Login to Citrix if not already logged in",
+          "if_subseq": null,
+          "else_subseq": "login_to_citrix",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                730,
+                220,
+                813,
+                274
+              ],
+              "file_name": "b84a956-a0f6-46af-814f-ab2426357f4f.png"
+            }
+          ]
+        }
+      },
+      "14": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert Meditech logo is present (means we are logged in to Citrix successfully)",
+          "limit": 10,
+          "specificity": 0.9,
+          "max_wait": 10,
+          "wait_interval": 1,
+          "data": [
+            {
+              "points": [
+                730,
+                220,
+                813,
+                274
+              ],
+              "file_name": "b84a956-a0f6-46af-814f-ab2426357f4f.png"
+            }
+          ]
+        }
+      },
+      "15": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press Ctrl+f to bring up Find dialogue",
+          "key_combo": "Ctrl+f"
+        }
+      },
+      "16": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "17": {
+        "action_type": "type_text",
+        "information": {
+          "explanation": "Type Meditech LIVE",
+          "text": "Meditech LIVE",
+          "type_speed": ".02"
+        }
+      },
+      "18": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "19": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press escape to exit find dialogue",
+          "key_combo": "esc"
+        }
+      },
+      "20": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "21": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return to launch NWL Meditech",
+          "key_combo": "return"
+        }
+      },
+      "22": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the login_to_meditech subsequence to actually log in to Meditech",
+          "subsequence_name": "login_to_meditech"
+        }
+      }
+    }
+  },
+  "login_to_meditech": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert Meditech login window is present",
+          "limit": 10,
+          "specificity": 0.9,
+          "max_wait": 60,
+          "wait_interval": 1,
+          "data": [
+            {
+              "points": [
+                458,
+                433,
+                545,
+                490
+              ],
+              "file_name": "2f9daa3-984b-49c9-88d3-149f0c94baad.png"
+            }
+          ]
+        }
+      },
+      "1": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "2": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "Check to see if the Meditech Username box is empty",
+          "if_subseq": null,
+          "else_subseq": "clear_meditech_username",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                462,
+                434,
+                663,
+                464
+              ],
+              "file_name": "04eae3b-6b9f-47e6-8a49-8d4d6763db99.png"
+            }
+          ]
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "type_custom_text",
+        "information": {
+          "explanation": "Type Meditech username",
+          "expression": "config['username']",
+          "type_speed": "0.02"
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "6": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press tab.",
+          "key_combo": "tab"
+        }
+      },
+      "7": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "8": {
+        "action_type": "type_custom_text",
+        "information": {
+          "explanation": "Type Meditech password",
+          "expression": "config['password']",
+          "type_speed": "0.02"
+        }
+      },
+      "9": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "10": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return.",
+          "key_combo": "return"
+        }
+      },
+      "11": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert at EHR base state",
+          "limit": 10,
+          "specificity": 0.9,
+          "max_wait": 20,
+          "wait_interval": 1,
+          "data": [
+            {
+              "points": [
+                3,
+                486,
+                141,
+                515
+              ],
+              "file_name": "9444476-18c3-4b75-91a9-196cc4e22155.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "recover_ehr": {
+    "type": "system_recovery",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run stop_ehr subsequence",
+          "subsequence_name": "stop_ehr"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "3": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run start_ehr subsequence",
+          "subsequence_name": "start_ehr_without_recovery"
+        }
+      }
+    }
+  },
+  "login_to_citrix": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert McLaren Port Huron login screen is present",
+          "max_wait": 10,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                900,
+                570,
+                1001,
+                642
+              ],
+              "file_name": "92b4c92-5481-4fa5-afb7-94763d4f652b.png"
+            }
+          ]
+        }
+      },
+      "1": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "2": {
+        "action_type": "type_custom_text",
+        "information": {
+          "explanation": "Type Citrix username",
+          "expression": "config['username']",
+          "type_speed": "0.02"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press tab.",
+          "key_combo": "tab"
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "6": {
+        "action_type": "type_custom_text",
+        "information": {
+          "explanation": "Type Citrix password",
+          "expression": "config['password']",
+          "type_speed": "0.02"
+        }
+      },
+      "7": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "8": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If porthuronhosp.org is already selected, do nothing. If not, run subsequence to select is as the domain",
+          "if_subseq": null,
+          "else_subseq": "select_porthuron_domain",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                538,
+                498,
+                693,
+                514
+              ],
+              "file_name": "c31a263-07a3-43d1-8f54-cbad52aebda2.png"
+            }
+          ]
+        }
+      },
+      "9": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return.",
+          "key_combo": "return"
+        }
+      },
+      "10": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert 'Logged on as' text is present (indicating login success)",
+          "max_wait": 45,
+          "wait_interval": 1,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                404,
+                90,
+                481,
+                102
+              ],
+              "file_name": "b3e99a9-ccf1-43a0-8821-a8ef5bbb6d78.png"
+            }
+          ]
+        }
+      },
+      "11": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If upcoming password change popup is on screen, notify slack channel and click 'no' to continue",
+          "if_subseq": "handle_citrix_upcoming_password_notification",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                209,
+                205,
+                443,
+                218
+              ],
+              "file_name": "fb72c6b-c784-4902-8bd2-7df993bdfa99.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "close_meditech_if_open": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If Meditech icon is on the taskbar, close it",
+          "if_subseq": "close_meditech",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                449,
+                986,
+                481,
+                1015
+              ],
+              "file_name": "0486246-8e39-4da5-a356-5b9605fef2fc.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "close_meditech": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Meditech taskbar icon",
+          "x": 17,
+          "y": 16,
+          "template_x_top_left": 447,
+          "template_y_top_left": 986,
+          "template_x_bottom_right": 482,
+          "template_y_bottom_right": 1018,
+          "image_name": "meditech_app_on_taskbar",
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Right click the Meditech icon",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "r"
+        }
+      },
+      "2": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to X Close text",
+          "x": "m",
+          "y": "m",
+          "image_name": "mt_taskbar_close",
+          "relative_area": [
+            [
+              296,
+              947
+            ],
+            [
+              358,
+              969
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "3": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click to close Meditech windows",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "wait for ehr to stop ",
+          "wait_time": "10"
+        }
+      }
+    }
+  },
+  "close_chrome": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "end_process",
+        "information": {
+          "explanation": "Kill all Chrome processes",
+          "process_to_end": "chrome.exe"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      }
+    }
+  },
+  "close_current_program": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press alt+f4 to close the current program",
+          "key_combo": "alt+f4"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      }
+    }
+  },
+  "clear_meditech_username": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press shift+tab to select username box.",
+          "key_combo": "shift+tab"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press backspace to clear username.",
+          "key_combo": "backspace"
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      }
+    }
+  },
+  "assert_ehr_base_state": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert at EHR base state",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                3,
+                486,
+                141,
+                515
+              ],
+              "file_name": "9444476-18c3-4b75-91a9-196cc4e22155.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      }
+    }
+  },
+  "open_physician_care_manager": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Auditor View button",
+          "x": "m",
+          "y": "m",
+          "image_name": "meditech_auditor_view_button",
+          "relative_area": [
+            [
+              12,
+              490
+            ],
+            [
+              130,
+              510
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Auditor View button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 10 seconds",
+          "wait_time": "10"
+        }
+      }
+    }
+  },
+  "reset_locations_to_top": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press PgUp 4 times to make sure we are at the top of the location list",
+          "key_combo": "pgup"
+        }
+      }
+    }
+  },
+  "click_locations_button": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Locations button",
+          "x": "m",
+          "y": "m",
+          "image_name": "pcm_locations_button",
+          "relative_area": [
+            [
+              429,
+              940
+            ],
+            [
+              517,
+              978
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "2": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Locations button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      }
+    }
+  },
+  "process_3east_surgical_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return.",
+          "key_combo": "return"
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "7": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "8": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_intensive_care_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "5": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "6": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "7": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "8": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return.",
+          "key_combo": "return"
+        }
+      },
+      "9": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "10": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "11": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "12": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_4_n_medsurg_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to 4 N MedSurg location",
+          "x": 49,
+          "y": 5,
+          "template_x_top_left": 362,
+          "template_y_top_left": 208,
+          "template_x_bottom_right": 498,
+          "template_y_bottom_right": 225,
+          "image_name": "location_4_n_medsurg",
+          "sensitivity": 80
+        }
+      },
+      "5": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "7": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "8": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_4_s_surgical_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to 4 S Surgical",
+          "x": 39,
+          "y": 10,
+          "template_x_top_left": 363,
+          "template_y_top_left": 227,
+          "template_x_bottom_right": 509,
+          "template_y_bottom_right": 244,
+          "image_name": "location_4_s_surgical",
+          "sensitivity": 80
+        }
+      },
+      "5": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "7": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "8": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "9": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "parse_patient_list"
+  },
+  "process_observation_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to 1 S Observation",
+          "x": 37,
+          "y": 8,
+          "template_x_top_left": 359,
+          "template_y_top_left": 131,
+          "template_x_bottom_right": 570,
+          "template_y_bottom_right": 149,
+          "image_name": "locations_1_s_observation",
+          "sensitivity": 80
+        }
+      },
+      "4": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "6": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "7": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "8": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_icu_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to 2 S ICU location",
+          "x": 34,
+          "y": 8,
+          "template_x_top_left": 363,
+          "template_y_top_left": 153,
+          "template_x_bottom_right": 440,
+          "template_y_bottom_right": 166,
+          "image_name": "2_s_icu_location_button",
+          "sensitivity": 80
+        }
+      },
+      "4": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "6": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "7": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "8": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_oncology_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Oncology location",
+          "x": 79,
+          "y": 8,
+          "template_x_top_left": 360,
+          "template_y_top_left": 169,
+          "template_x_bottom_right": 528,
+          "template_y_bottom_right": 189,
+          "image_name": "oncology_location",
+          "sensitivity": 80
+        }
+      },
+      "5": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "7": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "8": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_pediatric_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Pediatric location",
+          "x": 41,
+          "y": 9,
+          "template_x_top_left": 362,
+          "template_y_top_left": 378,
+          "template_x_bottom_right": 520,
+          "template_y_bottom_right": 397,
+          "image_name": "location_pediatric",
+          "sensitivity": 80
+        }
+      },
+      "5": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "7": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "8": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_selective_care_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to 3 S Cardiac Step Down",
+          "x": 79,
+          "y": 10,
+          "template_x_top_left": 363,
+          "template_y_top_left": 188,
+          "template_x_bottom_right": 556,
+          "template_y_bottom_right": 207,
+          "image_name": "location_3_s_cardiac_step_down",
+          "sensitivity": 80
+        }
+      },
+      "5": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "7": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "8": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "process_emergency_center_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert on Any Location patient list",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                494,
+                39,
+                631,
+                67
+              ],
+              "file_name": "22109fd-9b10-443e-9fb5-507eb4d3a7d8.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the reset_locations_to_top subsequence",
+          "subsequence_name": "reset_locations_to_top"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "5": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "6": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "7": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "8": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "9": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "10": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "11": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "12": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "13": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "14": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "15": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "16": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "17": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "18": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "19": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "20": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "21": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "22": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "23": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "24": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "25": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down.",
+          "key_combo": "down"
+        }
+      },
+      "26": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "27": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return.",
+          "key_combo": "return"
+        }
+      },
+      "28": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "29": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the select_top_date subsequence",
+          "subsequence_name": "select_top_date"
+        }
+      },
+      "30": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "31": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "32": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "33": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to the Dates button",
+          "x": "m",
+          "y": "m",
+          "image_name": "location_dates_button",
+          "relative_area": [
+            [
+              524,
+              940
+            ],
+            [
+              586,
+              976
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "34": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Dates button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "35": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "36": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the select_second_date subsequence",
+          "subsequence_name": "select_second_date"
+        }
+      },
+      "37": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "38": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the process_location subsequence",
+          "subsequence_name": "process_location"
+        }
+      },
+      "39": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      },
+      "40": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the click_locations_button subsequence to return to the Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    },
+    "recovery": "return_to_locations_screen"
+  },
+  "parse_location_with_scroll": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert Account Num is present (so we know we are on a patient list screen)",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                798,
+                148,
+                916,
+                164
+              ],
+              "file_name": "2e4c2d9-0708-45cb-b47a-df020e4c969b.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "parse_image",
+        "information": {
+          "explanation": "Parse patient list screen",
+          "image_name": "mph_patient_list_screen",
+          "parser": "parse_patient_list",
+          "upper_left_x": 0,
+          "upper_left_y": 0,
+          "lower_right_x": 1280,
+          "lower_right_y": 1024
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "See if the scrollbar is present. If so, run the recursive scroll subsequence",
+          "if_subseq": "parse_location_with_scroll_recursive",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                1104,
+                921,
+                1120,
+                936
+              ],
+              "file_name": "61ba1b4-5582-4dce-94d1-0bb539010329.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "select_top_date": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert Services Dates table is present",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                491,
+                113,
+                613,
+                130
+              ],
+              "file_name": "ad148c5-cdb1-4f80-8fd4-7d12b12f6832.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return to select the top date",
+          "key_combo": "return"
+        }
+      }
+    }
+  },
+  "select_second_date": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "assert_screen",
+        "information": {
+          "explanation": "Assert Services Dates table is present",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                491,
+                113,
+                613,
+                130
+              ],
+              "file_name": "ad148c5-cdb1-4f80-8fd4-7d12b12f6832.png"
+            }
+          ]
+        }
+      },
+      "2": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press down to select the second date",
+          "key_combo": "down"
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return to select the top date",
+          "key_combo": "return"
+        }
+      }
+    }
+  },
+  "return_to_locations_screen": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Click the Locations button to return to the main Locations screen",
+          "subsequence_name": "click_locations_button"
+        }
+      }
+    }
+  },
+  "close_physician_care_manager": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If Physician Care Manager is open, close it",
+          "if_subseq": "close_current_program",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                2,
+                3,
+                155,
+                23
+              ],
+              "file_name": "779e85f-e03f-4f43-9cf1-df0142f4337c.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parse_location_with_scroll_recursive": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to down arrow on scroll bar",
+          "x": "m",
+          "y": "m",
+          "image_name": "location_scroll_bar_down_arrow",
+          "relative_area": [
+            [
+              1104,
+              922
+            ],
+            [
+              1117,
+              935
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on down arrow 43 times to scroll to more patients",
+          "number_of_clicks": "43",
+          "time_difference_between_clicks": "0.1",
+          "click_type": "l"
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "5": {
+        "action_type": "parse_image",
+        "information": {
+          "explanation": "Execute the patient list parser for the current screen",
+          "image_name": "mph_patient_list",
+          "parser": "parse_patient_list",
+          "upper_left_x": 0,
+          "upper_left_y": 0,
+          "lower_right_x": 1280,
+          "lower_right_y": 1024
+        }
+      },
+      "6": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "7": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "See if the scroll bar is down at the bottom",
+          "if_subseq": "parse_location_with_scroll_recursive",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                1104,
+                914,
+                1116,
+                933
+              ],
+              "file_name": "5b54e5c-5c1e-4d65-b76d-ebc1e8d9dd80.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "process_location": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "Check for No Visits For This Location popup and parse if not present",
+          "if_subseq": "close_no_visits_popup",
+          "else_subseq": "parse_location_with_scroll",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                513,
+                465,
+                766,
+                497
+              ],
+              "file_name": "5786bb4-6af2-4180-b958-34ce645862d2.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "close_no_visits_popup": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "1": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return to close No Visits popup",
+          "key_combo": "return"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      }
+    }
+  },
+  "patient_absent_error_thrower": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "run_function",
+        "information": {
+          "explanation": "Run custom function to let controller know patient is absent",
+          "function": "throw_patient_absent_error"
+        }
+      }
+    }
+  },
+  "patient_present_parse_patient_sequence": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "parse patient header for demographic information",
+          "subsequence_name": "parse_patient_header"
+        }
+      },
+      "1": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "parse patient vitals",
+          "subsequence_name": "parse_patient_vitals"
+        }
+      },
+      "2": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "parse patient labs",
+          "subsequence_name": "parse_patient_labs"
+        }
+      }
+    }
+  },
+  "parse_patient_header": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "parse_text",
+        "information": {
+          "explanation": "Run text parser to create patientID demographics object",
+          "parser": "parse_patientid"
+        }
+      },
+      "1": {
+        "action_type": "parse_image",
+        "information": {
+          "explanation": "Parse patient demographics",
+          "image_name": "mph_patient_demographics",
+          "parser": "parse_patient_header",
+          "upper_left_x": 0,
+          "upper_left_y": 0,
+          "lower_right_x": 1280,
+          "lower_right_y": 1024
+        }
+      }
+    }
+  },
+  "parse_patient_labs": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Laboratory button",
+          "x": "m",
+          "y": "m",
+          "image_name": "laboratory_button",
+          "relative_area": [
+            [
+              1126,
+              512
+            ],
+            [
+              1275,
+              532
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Laboratory button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for Laboratory data to load",
+          "wait_time": "2"
+        }
+      },
+      "3": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If \"No Current Lab Results\" text is not on the screen, continue parsing labs",
+          "if_subseq": null,
+          "else_subseq": "labs_present_continue_parse",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                456,
+                149,
+                659,
+                170
+              ],
+              "file_name": "7ed1482-d140-41a8-b0a1-4f5156d3754f.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parse_patient_vitals": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Vital Signs button",
+          "x": "m",
+          "y": "m",
+          "image_name": "vital_signs_button",
+          "relative_area": [
+            [
+              1127,
+              453
+            ],
+            [
+              1275,
+              469
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Vital Signs button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for Vital Signs to load",
+          "wait_time": "2"
+        }
+      },
+      "3": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If \"No Vital Signs\" text is not present, run the parser",
+          "if_subseq": null,
+          "else_subseq": "parse_labs_vitals_ocr",
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                484,
+                106,
+                649,
+                138
+              ],
+              "file_name": "88d2956-fe73-4c03-95e2-357a8e20c1d6.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parse_labs_vitals_ocr": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "parse_image",
+        "information": {
+          "explanation": "Parse the current screen for labs and/or vitals",
+          "image_name": "mph_labs_vitals_parser",
+          "parser": "parse_patient_information_table",
+          "upper_left_x": 0,
+          "upper_left_y": 0,
+          "lower_right_x": 1280,
+          "lower_right_y": 1024
+        }
+      }
+    }
+  },
+  "labs_present_continue_parse": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If the Hematology labs button is present, parse Hematology labs",
+          "if_subseq": "parse_hematology_labs",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                413,
+                141,
+                528,
+                169
+              ],
+              "file_name": "eaa5a7d-26b5-4284-81fb-e180ab813639.png"
+            }
+          ]
+        }
+      },
+      "1": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "2": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If Blood Gas button is present, parse Blood Gas labs",
+          "if_subseq": "parse_blood_gas_labs",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                501,
+                142,
+                603,
+                170
+              ],
+              "file_name": "515a066-2b48-410e-87eb-355a7dc2def2.png"
+            }
+          ]
+        }
+      },
+      "3": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "4": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If Chemistry button is present, parse Chemistry labs",
+          "if_subseq": "parse_chemistry_labs",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                456,
+                143,
+                558,
+                168
+              ],
+              "file_name": "61a944d-0364-4ffa-8244-49a599aa1347.png"
+            }
+          ]
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "6": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If coagulation button is present, parse coagulation",
+          "if_subseq": "parse_coagulation_labs",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                581,
+                144,
+                696,
+                169
+              ],
+              "file_name": "ff4e455-0784-4bfd-a34d-36fffa93f07b.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parse_hematology_labs": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Hematology labs button",
+          "x": "m",
+          "y": "m",
+          "image_name": "labs_hematology_button",
+          "relative_area": [
+            [
+              416,
+              143
+            ],
+            [
+              526,
+              169
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Hematology button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for the Hematology labs to load",
+          "wait_time": "2"
+        }
+      },
+      "3": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If the Exclude POC button is present, click it then continue with parsing",
+          "if_subseq": "click_exclude_poc_button",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                1039,
+                942,
+                1123,
+                977
+              ],
+              "file_name": "e2821f3-f10c-4f25-b509-828771bf97d9.png"
+            }
+          ]
+        }
+      },
+      "4": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the parse_labs_vitals_ocr subsequence",
+          "subsequence_name": "parse_labs_vitals_ocr"
+        }
+      }
+    }
+  },
+  "parse_chemistry_labs": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to the Chemistry labs button",
+          "x": "m",
+          "y": "m",
+          "image_name": "labs_chemistry_button",
+          "relative_area": [
+            [
+              646,
+              141
+            ],
+            [
+              746,
+              169
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on the Chemistry labs button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for the Chemistry labs to load",
+          "wait_time": "2"
+        }
+      },
+      "3": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If the Exclude POC button is present, click it then continue with parsing",
+          "if_subseq": "click_exclude_poc_button",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                1039,
+                942,
+                1123,
+                977
+              ],
+              "file_name": "e2821f3-f10c-4f25-b509-828771bf97d9.png"
+            }
+          ]
+        }
+      },
+      "4": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the parse_labs_vitals_ocr subsequence",
+          "subsequence_name": "parse_labs_vitals_ocr"
+        }
+      }
+    }
+  },
+  "parse_blood_gas_labs": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to the Blood Gas labs button",
+          "x": "m",
+          "y": "m",
+          "image_name": "labs_blood_gas_button",
+          "relative_area": [
+            [
+              501,
+              143
+            ],
+            [
+              603,
+              169
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Blood Gas button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for data to load",
+          "wait_time": "2"
+        }
+      },
+      "3": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If the Exclude POC button is present, click it then continue with parsing",
+          "if_subseq": "click_exclude_poc_button",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                1039,
+                942,
+                1123,
+                977
+              ],
+              "file_name": "e2821f3-f10c-4f25-b509-828771bf97d9.png"
+            }
+          ]
+        }
+      },
+      "4": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the parse_labs_vitals_ocr subsequence",
+          "subsequence_name": "parse_labs_vitals_ocr"
+        }
+      }
+    }
+  },
+  "parse_coagulation_labs": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to coagulation button",
+          "x": 56,
+          "y": 13,
+          "template_x_top_left": 580,
+          "template_y_top_left": 142,
+          "template_x_bottom_right": 696,
+          "template_y_bottom_right": 169,
+          "image_name": "labs_coagulation_button",
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Blood Gas button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds for data to load",
+          "wait_time": "2"
+        }
+      },
+      "3": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If the Exclude POC button is present, click it then continue with parsing",
+          "if_subseq": "click_exclude_poc_button",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                1039,
+                942,
+                1123,
+                977
+              ],
+              "file_name": "e2821f3-f10c-4f25-b509-828771bf97d9.png"
+            }
+          ]
+        }
+      },
+      "4": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the parse_labs_vitals_ocr subsequence",
+          "subsequence_name": "parse_labs_vitals_ocr"
+        }
+      }
+    }
+  },
+  "close_network_login_window": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "move_to_coordinates",
+        "information": {
+          "explanation": "Move to blank space on taskbar",
+          "move_x": 1040,
+          "move_y": 1005
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on empty space on taskbar",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to network login icon",
+          "x": "m",
+          "y": "m",
+          "image_name": "meditech_login_window_taskbar_icon",
+          "relative_area": [
+            [
+              390,
+              983
+            ],
+            [
+              441,
+              1013
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "3": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Meditech Network Login window on taskbar",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "5": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to X to close",
+          "x": "m",
+          "y": "m",
+          "image_name": "meditech_network_login_close_x",
+          "relative_area": [
+            [
+              832,
+              367
+            ],
+            [
+              871,
+              386
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "6": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click to dismiss popup",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "7": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 3 seconds for close",
+          "wait_time": "3"
+        }
+      }
+    }
+  },
+  "close_meditech_network_login_then_check_again": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "subsequence",
+        "information": {
+          "explanation": "Run the close_network_login_window subsequence",
+          "subsequence_name": "close_network_login_window"
+        }
+      },
+      "1": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "See if Meditech Network Login window is still open. This can happen if a second prompt comes up. If so, close it",
+          "if_subseq": "close_network_login_window",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                394,
+                984,
+                433,
+                1011
+              ],
+              "file_name": "e57e81c-dae2-4dcf-98ca-2e8737668555.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "close_meditech_network_login_window_if_open": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "See if Meditech Network Login window is open. If so, we need to close it",
+          "if_subseq": "close_meditech_network_login_then_check_again",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                394,
+                984,
+                433,
+                1011
+              ],
+              "file_name": "e57e81c-dae2-4dcf-98ca-2e8737668555.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "select_current_visit": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Selected Visits and click",
+          "x": 40,
+          "y": 48,
+          "template_x_top_left": 436,
+          "template_y_top_left": 206,
+          "template_x_bottom_right": 575,
+          "template_y_bottom_right": 288,
+          "image_name": "selected_visits_option",
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Selected Visits",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to top visit on select visits screen",
+          "x": 10,
+          "y": 40,
+          "template_x_top_left": 121,
+          "template_y_top_left": 284,
+          "template_x_bottom_right": 148,
+          "template_y_bottom_right": 319,
+          "image_name": "select_visits_top_visit_box",
+          "sensitivity": 80
+        }
+      },
+      "4": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on top visit",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "1",
+          "wait_time": "1"
+        }
+      },
+      "6": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to New Results button",
+          "x": 39,
+          "y": 79,
+          "template_x_top_left": 1120,
+          "template_y_top_left": 344,
+          "template_x_bottom_right": 1277,
+          "template_y_bottom_right": 371,
+          "image_name": "new_results_button_select_visits",
+          "sensitivity": 80
+        }
+      },
+      "7": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on New Results button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      }
+    }
+  },
+  "close_meditech_connect_error_popup": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to NWL Meditech Error popup",
+          "x": "m",
+          "y": "m",
+          "image_name": "meditech_connect_error_icon",
+          "relative_area": [
+            [
+              433,
+              625
+            ],
+            [
+              479,
+              666
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on Meditech Connect Error popup",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to OK button",
+          "x": "m",
+          "y": "m",
+          "image_name": "meditech_connect_error_ok",
+          "relative_area": [
+            [
+              771,
+              700
+            ],
+            [
+              861,
+              727
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "3": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click on OK to dismiss popup",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      }
+    }
+  },
+  "check_for_connect_error_popup": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If the Meditech Connect Error popup is present, close it",
+          "if_subseq": "close_meditech_connect_error_popup",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                418,
+                582,
+                480,
+                666
+              ],
+              "file_name": "meditech_connect_error_icon.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "check_for_stopped_working_popup": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "Check for windows stopped working popup",
+          "if_subseq": "close_stopped_working_popup",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                547,
+                685,
+                694,
+                711
+              ],
+              "file_name": "a1a2773-0ab2-40a8-ad1d-1a09b4c19869.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "close_stopped_working_popup": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to the Close the program button",
+          "x": "m",
+          "y": "m",
+          "image_name": "close_the_program_button",
+          "relative_area": [
+            [
+              600,
+              643
+            ],
+            [
+              744,
+              664
+            ]
+          ],
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "2": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click the Close the program button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      }
+    }
+  },
+  "close_windows_stopped_working_if_open": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "if_else_screen",
+        "information": {
+          "explanation": "If Windows stopped working popup is on screen, close it",
+          "if_subseq": "close_windows_stopped_working_popup",
+          "else_subseq": null,
+          "limit": 10,
+          "specificity": 0.9,
+          "data": [
+            {
+              "points": [
+                602,
+                550,
+                752,
+                579
+              ],
+              "file_name": "478811a-a6ba-4088-a08a-5707bfea4eb7.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "close_windows_stopped_working_popup": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to the has stopped working text and click to focus the window",
+          "x": 64,
+          "y": 13,
+          "template_x_top_left": 601,
+          "template_y_top_left": 555,
+          "template_x_bottom_right": 754,
+          "template_y_bottom_right": 577,
+          "image_name": "windows_has_stopped_working_popup",
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click to focus",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "Press return.",
+          "key_combo": "return"
+        }
+      },
+      "4": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 2 seconds",
+          "wait_time": "2"
+        }
+      }
+    }
+  },
+  "click_exclude_poc_button": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to Exclude POC button",
+          "x": 39,
+          "y": 22,
+          "template_x_top_left": 1042,
+          "template_y_top_left": 944,
+          "template_x_bottom_right": 1121,
+          "template_y_bottom_right": 983,
+          "image_name": "exclude_poc_button",
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click Exclude POC button",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 4 seconds for screen to reload without POC",
+          "wait_time": "4"
+        }
+      }
+    }
+  },
+  "pre_logon_message": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "wait a bit",
+          "wait_time": "2"
+        }
+      },
+      "1": {
+        "action_type": "keyboard_combination",
+        "information": {
+          "explanation": "press return to close message",
+          "key_combo": "return"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "wait a bit",
+          "wait_time": "8"
+        }
+      }
+    }
+  },
+  "select_porthuron_domain": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to domain selection box",
+          "x": 100,
+          "y": 40,
+          "template_x_top_left": 527,
+          "template_y_top_left": 469,
+          "template_x_bottom_right": 585,
+          "template_y_bottom_right": 518,
+          "image_name": "citrix_login_domain_selection",
+          "sensitivity": 80
+        }
+      },
+      "1": {
+        "action_type": "click",
+        "information": {
+          "explanation": "CLick",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "2": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      },
+      "3": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to porthuronhosp.org optioon",
+          "x": 43,
+          "y": 9,
+          "template_x_top_left": 591,
+          "template_y_top_left": 537,
+          "template_x_bottom_right": 690,
+          "template_y_bottom_right": 552,
+          "image_name": "citrix_login_porthuronhosp",
+          "sensitivity": 80
+        }
+      },
+      "4": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      },
+      "5": {
+        "action_type": "wait",
+        "information": {
+          "explanation": "Wait 1 second",
+          "wait_time": "1"
+        }
+      }
+    }
+  },
+  "handle_citrix_upcoming_password_notification": {
+    "type": "action",
+    "steps": {
+      "0": {
+        "action_type": "run_function",
+        "information": {
+          "explanation": "Run function to notify slack channel",
+          "function": "report_upcoming_citrix_password_change_slack"
+        }
+      },
+      "1": {
+        "action_type": "image_move",
+        "information": {
+          "explanation": "Move to \"No\" button",
+          "x": 25,
+          "y": 6,
+          "template_x_top_left": 319,
+          "template_y_top_left": 263,
+          "template_x_bottom_right": 374,
+          "template_y_bottom_right": 277,
+          "image_name": "citrix_upcoming_password_change_no",
+          "sensitivity": 80
+        }
+      },
+      "2": {
+        "action_type": "click",
+        "information": {
+          "explanation": "Click",
+          "number_of_clicks": "1",
+          "time_difference_between_clicks": "0.0",
+          "click_type": "l"
+        }
+      }
+    }
+  }
+}

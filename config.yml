@@ -1,0 +1,50 @@
+# CONFIG.YML
+# Welcome to the integration configuration. Leave a value blank to force us to set it at runtime
+
+
+# -------------
+# WORKER CONFIG
+# -------------
+# the unique name of the worker (right now, the only thing that's different for each worker)
+worker name:
+
+worker port: 8002 #uh-oh, it's over 9000!
+
+# config server always runs on same server as worker, so just record port
+config port: 8001
+
+controller address: mph_controller.aws.dascena.com
+
+# the timeout for requests made by the worker of the controller in seconds
+worker outbound timeout: 10
+
+enable auto restart: True
+
+# -------------
+# SHARED CONFIG
+# -------------
+controller port: 8000
+
+# the shortcode for the current hospital
+hospital name: mph
+
+# the tz timezone name for the hospital's timezone
+# find in the TZ column at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+# for instance California could be
+#
+#     hospital timezone: America/Los_Angeles
+#
+hospital timezone: America/New_York
+
+# logstash configurations for sending logs to logstash server
+logstash host: logstash.aws.dascena.com
+logstash port: 5959
+
+max list age: 60
+core address: 127.0.0.1
+core port: 8087
+parse patient timeout: 20
+parse list timeout: 240
+
+username:
+password:

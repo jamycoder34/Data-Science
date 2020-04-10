@@ -1,0 +1,54 @@
+[
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "name",
+            "value": {
+                "first": "Scott B",
+                "last": "Dalecke"
+            }
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "MRN",
+            "value": "M000744056"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "DOB",
+            "value": "1965-11-28T00:00:00"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "gender",
+            "value": "M"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "ward",
+            "value": "4SSUR"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "bed",
+            "value": "1"
+        }
+    },
+    {
+        "type": "demographics",
+        "data": {
+            "prop": "room",
+            "value": "479"
+        }
+    }
+]
