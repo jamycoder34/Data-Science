@@ -82,6 +82,8 @@ class MtSixParser:
                 "Respiratory Rate": "RespRate",
                 "O2 Saturation": "SpO2",
                 "02 Saturation": "SpO2",
+                'O2 Delivery': 'O2 Delivery Method',
+                '02 Delivery': 'O2 Delivery Method',
                 "WBC": "WBC",
                 "PIt Count": "Platelets",
                 "Plt Count": "Platelets",
@@ -574,6 +576,8 @@ class MtSixParser:
         # make sure to convert every value to float
 
         for measurement_dictionary in final_information_array:
+            if 'o2 delivery method' in measurement_dictionary['data']['mmt'].lower():
+                continue
             measurement_dictionary['data']['val'] = float(
                 measurement_dictionary['data']['val'])
             ts = pytz.timezone(time_zone).localize(

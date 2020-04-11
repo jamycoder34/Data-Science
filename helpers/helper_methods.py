@@ -384,7 +384,11 @@ def create_dictionary(header, value, ts):
     # This is pretty hacky but will work for now
     # Leave blood pressure and temp values raw for now. Convert all others to float
     # or return if no float (shouldn't ever happen)
-    if header.lower() not in {'temp', 'blood pressure'}:
+    value = value.strip() if value else None
+    if not value:
+        return
+    float_exceptions = {'temp', 'blood pressure', 'o2 delivery method'}
+    if header.lower() not in float_exceptions:
         re_result = float_regex.search(value)
         if not re_result:
             return
@@ -405,7 +409,7 @@ def create_dictionary(header, value, ts):
             measurement_dict['data']['ts'] = parsed_time
             # print("Inside create dict: {}".format(measurement_dict))
             return measurement_dict
-        except:
+        except Exception:
             return None
     else:
         measurement_dict['data']['ts'] = ts
@@ -459,11 +463,13 @@ def create_measurement_dict_structure(header, value, ts, dict_of_acceptable_keys
             print("None Value provided: \nHeader: {}\nValue: {}\nTS: {}".format(header, value, ts))
         return None
 
-    # Make sure there is at least one float in the value (to accomodate Blood Pressure)
-    re_result = float_regex.search(value)
-    if not re_result:
-        return None
-        
+    if not any(i in header.lower() for i in ['o2 delivery', '02 delivery']):
+        # Make sure there is at least one float in the value
+        # (to accomodate Blood Pressure)
+        re_result = float_regex.search(value)
+        if not re_result:
+            return None
+
     # Create a dictionary that can be submitted to the controller
     measurement_dict = create_dictionary(header_val_for_database, value, ts)
     if measurement_dict is None:
