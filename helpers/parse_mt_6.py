@@ -135,7 +135,8 @@ class MtSixParser:
                 'Eosinophils # (Manual)': 'Eosinophils Absolute',
                 'Myelocytes #': 'Myelocytes Absolute',
                 'Myelocytes # (Manual)': 'Myelocytes Absolute',
-                'Band Neutrophils %': 'Bands'
+                'Band Neutrophils %': 'Bands',
+                'Coronavirus (PCR)': 'Covid-19 PCR',
             }
         else:
             self.key_dictionary = key_dict
@@ -573,18 +574,21 @@ class MtSixParser:
                 if isinstance(parsed_data, list) and None not in parsed_data:
                     final_information_array = final_information_array +\
                         parsed_data
-        # make sure to convert every value to float
 
         for measurement_dictionary in final_information_array:
-            if 'o2 delivery method' in measurement_dictionary['data']['mmt'].lower():
-                continue
-            measurement_dictionary['data']['val'] = float(
-                measurement_dictionary['data']['val'])
+            # Convert ts to UTC
             ts = pytz.timezone(time_zone).localize(
                 measurement_dictionary["data"]["ts"])
             ts = ts.astimezone(pytz.utc)
             ts = ts.replace(tzinfo=None)
             measurement_dictionary["data"]["ts"] = ts
+
+            # Convert values to float except for somes
+            float_exceptions = ['covid-19 pcr', 'o2 delivery method']
+            if measurement_dictionary['data']['mmt'].lower() in float_exceptions:
+                continue
+            measurement_dictionary['data']['val'] = float(
+                measurement_dictionary['data']['val'])
 
         if self.DEBUG:
             len(final_information_array)

@@ -387,7 +387,7 @@ def create_dictionary(header, value, ts):
     value = value.strip() if value else None
     if not value:
         return
-    float_exceptions = {'temp', 'blood pressure', 'o2 delivery method'}
+    float_exceptions = {'temp', 'blood pressure', 'o2 delivery method', 'covid-19 pcr'}
     if header.lower() not in float_exceptions:
         re_result = float_regex.search(value)
         if not re_result:
@@ -397,7 +397,7 @@ def create_dictionary(header, value, ts):
     measurement_dict['data']['mmt'] = header
     measurement_dict['data']['rt'] = datetime.utcnow()
     measurement_dict['data']['val'] = value
-    if type({}) == type(ts):
+    if isinstance(ts, dict):
         try:
             # print(ts)
             parsed_time = datetime(year=ts['year'],
@@ -462,8 +462,8 @@ def create_measurement_dict_structure(header, value, ts, dict_of_acceptable_keys
         if DEBUG:
             print("None Value provided: \nHeader: {}\nValue: {}\nTS: {}".format(header, value, ts))
         return None
-
-    if not any(i in header.lower() for i in ['o2 delivery', '02 delivery']):
+    float_exceptions = ['o2 delivery', '02 delivery', 'coronavirus']
+    if not any(i in header.lower() for i in float_exceptions):
         # Make sure there is at least one float in the value
         # (to accomodate Blood Pressure)
         re_result = float_regex.search(value)
