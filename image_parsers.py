@@ -40,7 +40,8 @@ def parse_patient_information_table(parse_image_path, context):
     """
     patient_table_information = get_patient_data(
         parse_image_path,
-        context['config']['hospital timezone']
+        context['config']['hospital timezone'],
+        context['config']['parse_icd_codes']
         )
     return patient_table_information
 
@@ -54,7 +55,8 @@ if __name__ == "__main__":
     # This MRN is just dummy data, not patient info.
     context = {
         'config': {
-            'hospital timezone': 'America/New_York'
+            'hospital timezone': 'America/New_York',
+            'parse_icd_codes': True
         },
         'task_state': {
             'current_patient': {'account_num': 'M000123123'}

@@ -483,3 +483,17 @@ def create_measurement_dict_structure(header, value, ts, dict_of_acceptable_keys
         return measurement_dict
     else:
         return [measurement_dict]
+
+
+def parse_icd_codes_from_table(list_of_parsed_data_lists):
+    problems = list_of_parsed_data_lists[1]
+    statuses = list_of_parsed_data_lists[3]
+    values = list_of_parsed_data_lists[6]
+    parsed_data = list()
+    for problem, status, value in zip(problems, statuses, values):
+        parsed_data.append({
+            'problem': problem.strip(),
+            'status': status.strip(),
+            'ICD_code': value.strip(),
+        })
+    return parsed_data
