@@ -502,7 +502,7 @@ class MtSixParser:
             # show_image(img)
 
             information_parsed_from_image = parse_text_from_image(
-                img, scale=3).replace("—", "").replace("\n", " ") \
+                img, scale=5).replace("—", "").replace("\n", " ") \
                 .replace("©", "O").strip()
 
             split_information_from_image = information_parsed_from_image.\
