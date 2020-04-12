@@ -551,8 +551,17 @@ class MtSixParser:
             # print("TS Conversion Failed.")
             return None
 
+    def parse_icd(self, list_of_parsed_data_lists, time_zone):
+        """
+        create an array of icd codes that is acceptable by the controller
+        i.e. list of patient icd info dicts
+        :param list_of_parsed_data_lists:
+        :return:
+        """
+        return parse_icd_codes_from_table(list_of_parsed_data_lists, time_zone)
+
     def create_array_to_post_to_parser(self, list_of_parsed_data_lists,
-                                       time_zone, parse_icd_codes=None):
+                                       time_zone):
         """
         create an array of information that is acceptable by the controller
         i.e. list of patient info dicts
@@ -560,9 +569,6 @@ class MtSixParser:
         :return:
         """
         final_information_array = []
-        # If the task is to parse ICD COde, do it separately
-        if parse_icd_codes:
-            return parse_icd_codes_from_table(list_of_parsed_data_lists)
         # iterate over list of readings
         for list_counter in range(1, len(list_of_parsed_data_lists)):
             # iterate over hourly readings

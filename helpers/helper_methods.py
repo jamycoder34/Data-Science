@@ -1,5 +1,6 @@
+import pytz
 import copy
-from datetime import datetime, timezone
+from datetime import datetime
 import re
 
 import pytesseract
@@ -485,15 +486,62 @@ def create_measurement_dict_structure(header, value, ts, dict_of_acceptable_keys
         return [measurement_dict]
 
 
-def parse_icd_codes_from_table(list_of_parsed_data_lists):
+def parse_icd_codes_from_table(list_of_parsed_data_lists, time_zone):
+    """
+    convert list_of_parsed_data_lists to list of dicts
+    acceptable by the controller
+    :param list_of_parsed_data_lists:
+    :param time_zone:
+    :return:
+    """
     problems = list_of_parsed_data_lists[1]
-    statuses = list_of_parsed_data_lists[3]
+    collection_ts = list_of_parsed_data_lists[5]
     values = list_of_parsed_data_lists[6]
     parsed_data = list()
-    for problem, status, value in zip(problems, statuses, values):
+    for problem, ts, value in zip(problems, collection_ts, values):
+        ts = get_date_object(ts, time_zone)
+        """
+        one limitation of scraper-worker at present is that
+        if a ts of None is supplied, rt will not be automatically
+        isoformatted. This will cause a JSON serialization error
+        when submitting the data to the controller.
+        Therefore, if you ever have a None ts, the rt must be isoformatted
+        before returning the mmt object.
+        """
+        rt = datetime.utcnow() if ts else datetime.utcnow().isoformat()
+
+        data = {
+            'rt': rt,
+            'ts': ts,
+            'mmt': 'Diagnosis Codes',
+            'val': value.strip() if value else None,
+        }
+        if problem:
+            data.update({
+                'text': problem.strip()
+            })
         parsed_data.append({
-            'problem': problem.strip(),
-            'status': status.strip(),
-            'ICD_code': value.strip(),
+            'type': 'measurement',
+            'data': data
         })
     return parsed_data
+
+
+def get_date_object(ts, time_zone):
+    """
+    Convert ts to UTC date object
+    :param: ts:
+    :return:
+    """
+    if not ts:
+        return
+    try:
+        date_format = '%m/%d/%Y %H:%M'
+        ts = datetime.strptime(ts.strip(), date_format)
+    except ValueError:
+        return
+
+    ts = pytz.timezone(time_zone).localize(ts)
+    ts = ts.astimezone(pytz.utc)
+    ts = ts.replace(tzinfo=None)
+    return ts

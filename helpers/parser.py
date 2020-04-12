@@ -34,7 +34,19 @@ ward_map = {
     }
 
 
-def get_patient_data(parse_image_path, time_zone, parse_icd_codes=None):
+def get_patient_icd_codes(parse_image_path, time_zone):
+    """
+    Parse patient icd table in body
+    :return:
+    """
+    parser = MtSixParser(coordinate_dict=coordinate_dictionary,
+                         color_dict=color_dictionary,
+                         image_path=parse_image_path,
+                         )
+    return parser.parse_icd(parser.parse_table_data(), time_zone)
+
+
+def get_patient_data(parse_image_path, time_zone):
     """
     Parse patient data table in body
     :return:
@@ -44,7 +56,7 @@ def get_patient_data(parse_image_path, time_zone, parse_icd_codes=None):
                          image_path=parse_image_path,
                          )
     return parser.create_array_to_post_to_parser(
-        parser.parse_table_data(), time_zone, parse_icd_codes)
+        parser.parse_table_data(), time_zone)
 
 
 def get_patient_header(parse_image_path):

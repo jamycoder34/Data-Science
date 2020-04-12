@@ -1,4 +1,5 @@
-from helpers.parser import get_patient_list, get_patient_header, get_patient_data
+from helpers.parser import get_patient_list, get_patient_header,\
+    get_patient_data, get_patient_icd_codes
 
 
 def parse_patient_list(parse_image_path, context):
@@ -29,6 +30,22 @@ def parse_patient_header(parse_image_path, context):
     return patient_header_information
 
 
+def parse_patient_icd(parse_image_path, context):
+    """
+    Parse patient icd - parses icd codes for patient
+
+    :param parse_image_path: Path of image to parse
+    :param context: Worker context
+
+    :return:
+    """
+    patient_icd_information = get_patient_icd_codes(
+        parse_image_path,
+        context['config']['hospital timezone']
+    )
+    return patient_icd_information
+
+
 def parse_patient_information_table(parse_image_path, context):
     """
     Parse patient information table - parses labs and vitals for patient
@@ -40,8 +57,7 @@ def parse_patient_information_table(parse_image_path, context):
     """
     patient_table_information = get_patient_data(
         parse_image_path,
-        context['config']['hospital timezone'],
-        context['config']['parse_icd_codes']
+        context['config']['hospital timezone']
         )
     return patient_table_information
 
@@ -55,15 +71,15 @@ if __name__ == "__main__":
     # This MRN is just dummy data, not patient info.
     context = {
         'config': {
-            'hospital timezone': 'America/New_York',
-            'parse_icd_codes': True
+            'hospital timezone': 'America/New_York'
         },
         'task_state': {
             'current_patient': {'account_num': 'M000123123'}
             }
         }
-    image_path = os.path.realpath('./test_data/image_parsers/parse_patient_information_table/labs6.png')
-    parse_result = parse_patient_information_table(None, context)
+    image_path = '/Users/umeshpathak/Works/HD/MPH Covid-vent-icd-cbc Samples/icd-4.png'
+    parse_result = parse_patient_icd(image_path, context)
+    # parse_result = parse_patient_information_table(image_path, context)
     pp.pprint(parse_result)
     """
     results_by_key = {}
